@@ -125,7 +125,7 @@ def check_and_adjust_image(image_path, target_resolution=(1080, 1920)):
     return cropped_image_path
     
 
-
+# Przykładowe użycie funkcji
 
 
 
