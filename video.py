@@ -25,7 +25,7 @@ def combine_clips(image_path, video_paths, audio_path, image_duration=2, target_
         print("Image file not found!")
         return None
     if not all(os.path.exists(video_path) for video_path in video_paths):
-        print("One or more video files not found!")
+        print("One or more video files not found!") #aa
         return None
     if not os.path.exists(audio_path):
         print("Audio file not found!")
