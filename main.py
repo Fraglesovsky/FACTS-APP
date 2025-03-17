@@ -1,4 +1,5 @@
 import os
+import sys
 from tts import generate_audio
 from video import combine_clips,search_video
 from image import generate_image,search_image,check_and_adjust_image
@@ -49,3 +50,13 @@ else:
     print("Nie można utworzyć filmu, ponieważ brakuje jednego lub więcej plików wejściowych.")
 
 print(f"Filmik zapisany: {video_paths}")
+
+
+def check_loaded_modules():
+    loaded_modules = sys.modules.keys()
+    print("Loaded modules:")
+    for module in loaded_modules:
+        print(module)
+
+# Wywołaj na końcu aplikacji
+check_loaded_modules()
