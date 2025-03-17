@@ -1,7 +1,10 @@
 import requests
 import os
-from dotenv import load_dotenv
+import psycopg2
 import re
+from dotenv import load_dotenv
+from DB import save_fact, fact_exists
+
 
 
 # Wczytaj zmienne środowiskowe z pliku .env
@@ -24,10 +27,13 @@ def get_fact():
     response = requests.get(api_url, headers=headers)
     if response.status_code == 200:
         fact = response.json()[0]["fact"]
-        return fact
-    else:
-        print(f"Error: {response.status_code}, {response.text}")
-        return None
+    if not fact_exists(fact):
+                save_fact(fact)
+                return fact
+                
+    print("Znaleziono duplikat, próbuję ponownie...")
+    
+    return None
 
 def extract_keywords(text):
     """
@@ -49,3 +55,6 @@ def extract_keywords(text):
     keywords = [word for word in text.split() if word not in stopwords]
     
     return keywords
+
+
+

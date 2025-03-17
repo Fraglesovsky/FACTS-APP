@@ -11,5 +11,9 @@ accelerate==0.27.2
 openai==1.14.3
 python-dotenv==1.0.1
 requests==2.28.2
+psycopg2==2.9.3
+tts==0.3.0
+psycopg2-binary==2.9.3
+
 
 
